@@ -7,6 +7,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.Window;
@@ -90,7 +91,15 @@ public class SplashActivity extends AppCompatActivity {
                                 finish();
                             }
                             else{
-                                startActivity(new Intent(SplashActivity.this, MainBuyerActivity.class));
+
+
+                                Log.i("Debug","In Shop Details");
+                                Intent shop_intent = new Intent(SplashActivity.this, ShopDetailsActivity.class);
+                                shop_intent.putExtra("shopUid", "DGajF9pw8ybHiK9mGUfwj7Z9qH93");
+                                startActivity(shop_intent);
+                                Log.i("Debug0","Triggered shop Detail Event");
+
+//                                startActivity(new Intent(SplashActivity.this, MainBuyerActivity.class));
                                 finish();
                             }
                     }

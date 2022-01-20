@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -63,8 +64,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
         shopNameTv = findViewById(R.id.shopNameTV);
         phoneTv = findViewById(R.id.phoneTV);
         emailTv = findViewById(R.id.emailTV);
-        openCloseTv = findViewById(R.id.openCloseTV);
-        deliveryFeeTv = findViewById(R.id.deliveryFeeTV);
+//        openCloseTv = findViewById(R.id.openCloseTV);
+//        deliveryFeeTv = findViewById(R.id.deliveryFeeTV);
         addressTv = findViewById(R.id.addressTV);
         filterProductTv = findViewById(R.id.filterProductTV);
         searchProductEt = findViewById(R.id.searchProductET);
@@ -79,12 +80,15 @@ public class ShopDetailsActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
         
         mAuth = FirebaseAuth.getInstance();
+
         shopUid = getIntent().getStringExtra("shopUid");
-        
+        Log.i("Debug","Yes UID IN TRIGGER");
+        Log.i("Debug",shopUid);
+
         loadMyInfo();
         loadShopDetails();
         loadShopProducts();
-        loadReviews();
+//        loadReviews();
         
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,31 +174,31 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
 
     private float ratingSum = 0;
-    private void loadReviews() {
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.child(shopUid).child("Ratings")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        ratingSum = 0;
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            float rating = Float.parseFloat(""+ds.child("ratings").getValue());
-                            ratingSum = ratingSum+rating;
-                        }
-
-                        long numberOfReview = dataSnapshot.getChildrenCount();
-                        float avgRating = ratingSum/numberOfReview;
-                        ratingBar.setRating(avgRating);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-    }
+//    private void loadReviews() {
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+//        ref.child(shopUid).child("Ratings")
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                        ratingSum = 0;
+//                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+//                            float rating = Float.parseFloat(""+ds.child("ratings").getValue());
+////                            ratingSum = ratingSum+rating;
+//                        }
+//
+//                        long numberOfReview = dataSnapshot.getChildrenCount();
+////                        float avgRating = ratingSum/numberOfReview;
+////                        ratingBar.setRating(avgRating);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//    }
 
     private void dialPhone() {
         startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode(shopPhone))));
@@ -249,17 +253,17 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 String profileImage = ""+dataSnapshot.child("profileImage").getValue();
                 String shopOpen = ""+dataSnapshot.child("shopOpen").getValue();
 
-                shopNameTv.setText(shopName);
-                emailTv.setText(shopEmail);
-                deliveryFeeTv.setText("Delivery Fee: $"+deliveryFee);
-                addressTv.setText(shopAddress);
-                phoneTv.setText(shopPhone);
-                if (shopOpen.equals("true")){
-                    openCloseTv.setText("Open");
-                }
-                else {
-                    openCloseTv.setText("Closed");
-                }
+//                shopNameTv.setText(shopName);
+//                emailTv.setText(shopEmail);
+//                deliveryFeeTv.setText("Delivery Fee: $"+deliveryFee);
+//                addressTv.setText(shopAddress);
+//                phoneTv.setText(shopPhone);
+//                if (shopOpen.equals("true")){
+//                    openCloseTv.setText("Open");
+//                }
+//                else {
+//                    openCloseTv.setText("Closed");
+//                }
                 try {
                     Picasso.get().load(profileImage).into(shopIv);
                 }

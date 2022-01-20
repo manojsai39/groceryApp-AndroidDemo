@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@color/colorGray02"/>
+            android:src="@drawable/shop"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -27,77 +27,77 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:padding="10dp" >
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/shopNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:text="Shop Name"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/shopNameTV"-->
+            <!--                style="@style/TextAppearance.AppCompat.Title"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:text="Shop Name"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
-            <TextView
-                android:id="@+id/phoneTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/shopNameTV"
-                android:text="Phone"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/phoneTV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/shopNameTV"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:text="Phone"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
-            <TextView
-                android:id="@+id/emailTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/phoneTV"
-                android:text="Email"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/emailTV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/phoneTV"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:text="Email"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
-            <TextView
-                android:id="@+id/openCloseTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:padding="5dp"
-                android:text="Open"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/openCloseTV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:padding="5dp"-->
+            <!--                android:text="Open"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
-            <TextView
-                android:id="@+id/deliveryFeeTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/openCloseTV"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="5dp"
-                android:text="Delivery Fee"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/deliveryFeeTV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/openCloseTV"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:text="Delivery Fee"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/deliveryFeeTV"
-                android:layout_alignParentRight="true"
-                android:numStars="5"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:progressBackgroundTint="@color/colorGray01"
-                android:progressTint="@color/colorWhite"/>
+            <!--            <RatingBar-->
+            <!--                android:id="@+id/ratingBar"-->
+            <!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/deliveryFeeTV"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:numStars="5"-->
+            <!--                android:progressBackgroundTint="@color/colorGray01"-->
+            <!--                android:progressTint="@color/colorWhite" />-->
 
-            <TextView
-                android:id="@+id/addressTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailTV"
-                android:text="Address"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/addressTV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/emailTV"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:text="Address"-->
+            <!--                android:textColor="@color/colorWhite" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@null"
-                    android:src="@drawable/ic_call_white"/>
+                    android:src="@drawable/ic_call_white" />
 
                 <ImageButton
                     android:id="@+id/mapBtn"
@@ -122,7 +122,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:background="@null"
-                    android:src="@drawable/ic_map_white"/>
+                    android:src="@drawable/ic_map_white" />
 
             </LinearLayout>
 
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Shop Details"
+            android:text="Grocerry App"
             android:textStyle="bold"
             android:textSize="24dp"
             android:textColor="@color/colorWhite" />

@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -149,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkUserType() {
+        Log.i("Debug...............","vcalleddd");
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.orderByChild("uid").equalTo(mAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -163,7 +165,13 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else{
                                 mProgressDialog.dismiss();
-                                startActivity(new Intent(LoginActivity.this, MainBuyerActivity.class));
+                                Log.i("Debug","In Shop Details");
+                                Intent shop_intent = new Intent(LoginActivity.this, ShopDetailsActivity.class);
+                                shop_intent.putExtra("shopUid", "DGajF9pw8ybHiK9mGUfwj7Z9qH93");
+                                startActivity(shop_intent);
+                                Log.i("Debug0","Triggered shop Detail Event");
+
+//                                startActivity(new Intent(LoginActivity.this, MainBuyerActivity.class));
                                 finish();
                             }
                         }

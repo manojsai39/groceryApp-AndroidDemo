@@ -2,6 +2,7 @@ package com.example.groceryapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,8 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ShopDetailsActivity.class);
+                Log.i("DEBUGGGING",uid);
+
                 intent.putExtra("shopUid", uid);
                 context.startActivity(intent);
             }
