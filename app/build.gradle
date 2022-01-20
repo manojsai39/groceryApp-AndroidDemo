@@ -2,12 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
     buildToolsVersion "29.0.2"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.groceryapp"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 26
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -42,4 +48,7 @@ dependencies {
     implementation 'com.github.mohammadatif:CircularImageView:1.0.0'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.google.android.material:material:1.0.0'
+        implementation platform('com.google.firebase:firebase-bom:29.0.3')
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.android.gms:play-services-auth:20.0.1'
 }

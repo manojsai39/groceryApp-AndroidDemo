@@ -97,19 +97,99 @@ public class CartActivity extends AppCompatActivity {
                     Toast.makeText(CartActivity.this, "Please enter your phone number in your profile before placing order", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                final String timestamp = ""+System.currentTimeMillis();
+                submitOrder();
 
-                Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
-                intent.putExtra("ShopId", shopId);
-                intent.putExtra("Latitude", myLatitude);
-                intent.putExtra("Longitude", myLongitude);
+                Intent intent = new Intent(CartActivity.this, OrderDetailsBuyerActivity.class);
+                intent.putExtra("orderFrom", shopId);
+                intent.putExtra("orderId", timestamp);
+                startActivity(intent);
+                finish();
+//                Intent intent = new Intent(CartActivity.this, OrderDetailsBuyerActivity.class);
+//                intent.putExtra("orderFrom", shopId);
+//                intent.putExtra("orderId", timestamp);
+//                startActivity(intent);
+
+//                Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
+//                intent.putExtra("ShopId", shopId);
+//                intent.putExtra("Latitude", myLatitude);
+//                intent.putExtra("Longitude", myLongitude);
 //                int upiTotal = Integer.parseInt(grandTotal.getText().toString())+Integer.valueOf(deliveryFee);
 //                Log.d("upiTotal", upiTotal+"");
-                intent.putExtra("GrandTotal", grandTotal.getText().toString().trim());
-                startActivity(intent);
+//                intent.putExtra("GrandTotal", grandTotal.getText().toString().trim());
+//                startActivity(intent);
             }
         });
 
 
+    }
+    private void submitOrder() {
+        mProgressDialog.setMessage("Placing Order....");
+        mProgressDialog.show();
+
+        final String timestamp = ""+System.currentTimeMillis();
+        String cost = grandTotal.getText().toString().trim();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("orderId", timestamp);
+        hashMap.put("orderTime", timestamp);
+        hashMap.put("orderStatus", "In Progress");
+        hashMap.put("orderCost", cost);
+        hashMap.put("orderBy", ""+mAuth.getUid());
+        hashMap.put("OrderFrom", ""+shopId);
+        hashMap.put("latitude", myLatitude);
+        hashMap.put("longitude", myLongitude);
+
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(shopId).child("Orders");
+        ref.child(timestamp).setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getUid());
+                        ref1.child("CartItem").child(shopId).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String finalPrice =""+ds.child("finalPrice").getValue();
+                                    String productCategory =""+ds.child("prductCategory").getValue();
+                                    String ItemImage = ""+ds.child("profileImage").getValue();
+                                    String quantity = ""+ds.child("quantity").getValue();
+                                    String title = ""+ds.child("title").getValue();
+                                    String pId = ""+ds.child("productId").getValue();
+
+                                    HashMap<String, String> hashMap1 = new HashMap<>();
+                                    hashMap1.put("finalPrice", finalPrice);
+                                    hashMap1.put("productCategory", productCategory);
+                                    hashMap1.put("ItemImage", ItemImage);
+                                    hashMap1.put("quantity", quantity);
+                                    hashMap1.put("title", title);
+                                    hashMap1.put("pId", pId);
+
+                                    Log.d("title", title);
+
+                                    ref.child(timestamp).child("items").child(pId).setValue(hashMap1);
+                                }
+//                                mProgressDialog.dismiss();
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+//                        ref1.child("CartItem").removeValue().equals(shopId);
+//                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        mProgressDialog.dismiss();
+                        Toast.makeText(CartActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 

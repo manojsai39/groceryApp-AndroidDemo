@@ -57,6 +57,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
+                user = null;
                 if (user == null){
                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
 //                    Pair[] pairs = new Pair[2];

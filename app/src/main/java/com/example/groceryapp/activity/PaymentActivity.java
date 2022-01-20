@@ -232,10 +232,10 @@ public class PaymentActivity extends AppCompatActivity {
                                 mProgressDialog.dismiss();
                                 Toast.makeText(PaymentActivity.this, "Order Placed Successfully...", Toast.LENGTH_SHORT).show();
 
-//                                Intent intent = new Intent(CartActivity.this, OrderDetailsBuyerActivity.class);
-//                                intent.putExtra("orderFrom", shopId);
-//                                intent.putExtra("orderId", timestamp);
-//                                startActivity(intent);
+                                Intent intent = new Intent(PaymentActivity.this, OrderDetailsBuyerActivity.class);
+                                intent.putExtra("orderFrom", shopId);
+                                intent.putExtra("orderId", timestamp);
+                                startActivity(intent);
                             }
 
                             @Override

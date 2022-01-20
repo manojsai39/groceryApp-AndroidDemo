@@ -138,14 +138,37 @@
                 android:text="Forgot Password"
                 android:textStyle="bold" />
 
+
+            <Button
+                android:id="@+id/sign_in_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/forgotTV"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_rect06"
+                android:minWidth="150dp"
+                android:text="Sign In Google"
+                android:textColor="@color/colorWhite" />
+
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/forgotTV"
                 android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="62dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/shape_rect06"
-                android:layout_margin="20dp"
                 android:minWidth="150dp"
                 android:text="Login"
                 android:textColor="@color/colorWhite" />
@@ -154,10 +177,15 @@
                 android:id="@+id/noAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_alignParentBottom="true"
                 android:layout_below="@id/loginBtn"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="17dp"
                 android:text="Not have account? Register"
                 android:textStyle="bold" />
 
