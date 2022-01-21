@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".activity.PaymentActivity"></activity>
-        <activity android:name=".activity.WriteReviewActivity" />
         <activity android:name=".activity.OrderDetailsShopActivity" />
         <activity android:name=".activity.OrderDetailsBuyerActivity" />
         <activity android:name=".activity.CartActivity" />
@@ -26,7 +25,6 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.EditProductActivity" />
         <activity android:name=".activity.AddProductActivity" />
-        <activity android:name=".activity.ProfileEditSellerActivity" />
         <activity android:name=".activity.ProfileEditBuyerActivity" />
         <activity
             android:name=".activity.MainBuyerActivity"
