@@ -24,6 +24,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -71,12 +72,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("309320983484-3o06kkgajf9g8roqg4qcslfco0gg0e37.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
         mProgressDialog = new ProgressDialog(this);
@@ -134,10 +136,15 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+            Log.i("Debuggg","Noy running sign in again");
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+
+                Log.i("Debuggg"," running task in again");
+
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
@@ -158,8 +165,11 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            Log.d("FDDddddddddd", "signInWithCredential:success");
+                            makeMeOnline();
+
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -171,11 +181,17 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void signIn() {
+        mGoogleSignInClient.signOut();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     private void updateUI(FirebaseUser user) {
-
+//        if (user != null) {
+//            mAuth = FirebaseAuth.getInstance();
+//
+//            makeMeOnline();
+//            Log.i("Debug", "Sing In success");
+//        }
 
 
     }
@@ -236,13 +252,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserType() {
         Log.i("Debug...............","vcalleddd");
+        Log.i("hchdchdvc",mAuth.getUid());
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        Log.i("dd.......", String.valueOf(ref));
+        Intent shop_intent = new Intent(LoginActivity.this, ShopDetailsActivity.class);
+        shop_intent.putExtra("shopUid", "U6c1bc2Oxeb3IX0xp1NuEBgvKIv1");
+        startActivity(shop_intent);
+
         ref.orderByChild("uid").equalTo(mAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
                             String accountType = ""+ds.child("accountType").getValue();
+
+                            Log.i("mmmmmmm",accountType);
                             if(accountType.equals("Seller")){
                                 mProgressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this, MainSellerActivity.class));
@@ -252,7 +276,8 @@ public class LoginActivity extends AppCompatActivity {
                                 mProgressDialog.dismiss();
                                 Log.i("Debug","In Shop Details");
                                 Intent shop_intent = new Intent(LoginActivity.this, ShopDetailsActivity.class);
-                                shop_intent.putExtra("shopUid", "DGajF9pw8ybHiK9mGUfwj7Z9qH93");
+//                                shop_intent.putExtra("shopUid", "DGajF9pw8ybHiK9mGUfwj7Z9qH93");
+                                shop_intent.putExtra("shopUid", "U6c1bc2Oxeb3IX0xp1NuEBgvKIv1");
                                 startActivity(shop_intent);
                                 Log.i("Debug0","Triggered shop Detail Event");
 

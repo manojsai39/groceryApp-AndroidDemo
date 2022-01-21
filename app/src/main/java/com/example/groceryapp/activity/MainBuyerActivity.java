@@ -18,6 +18,7 @@ import com.example.groceryapp.adapters.AdapterOrderUser;
 import com.example.groceryapp.adapters.AdapterShop;
 import com.example.groceryapp.models.ModelOrderUser;
 import com.example.groceryapp.models.ModelShop;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -76,6 +77,7 @@ public class MainBuyerActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mAuth.signOut();
                 checkUser();
             }
