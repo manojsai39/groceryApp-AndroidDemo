@@ -18,6 +18,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/shop"/>
 
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -106,23 +107,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/callBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_call_white" />
 
-                <ImageButton
-                    android:id="@+id/mapBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_map_white" />
 
             </LinearLayout>
 
@@ -175,14 +160,18 @@
             android:background="@drawable/shape_circle02"
             android:layout_alignParentRight="true"/>
 
+
         <ImageButton
-            android:id="@+id/reviewsBtn"
+            android:id="@+id/logoutBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_toLeftOf="@id/cartBtn"
+
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_star_white"
-            android:background="@android:color/transparent"/>
+            android:src="@drawable/ic_logout_white"
+            android:background="@null" />
+
+
 
     </RelativeLayout>
 

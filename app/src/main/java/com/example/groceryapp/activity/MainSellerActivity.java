@@ -196,14 +196,7 @@ public class MainSellerActivity extends AppCompatActivity {
             }
         });
 
-        reviewsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainSellerActivity.this, ShopReviewActivity.class);
-                intent.putExtra("shopId", mAuth.getUid());
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void loadAllOrders() {

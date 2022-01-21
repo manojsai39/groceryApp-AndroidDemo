@@ -18,7 +18,6 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".activity.PaymentActivity"></activity>
         <activity android:name=".activity.WriteReviewActivity" />
-        <activity android:name=".activity.ShopReviewActivity" />
         <activity android:name=".activity.OrderDetailsShopActivity" />
         <activity android:name=".activity.OrderDetailsBuyerActivity" />
         <activity android:name=".activity.CartActivity" />

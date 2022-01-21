@@ -57,18 +57,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
-                user = null;
+//                user = null;
                 if (user == null){
                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-//                    Pair[] pairs = new Pair[2];
-//                    pairs[0] = new Pair<View, String>(iconeIV, "logo_image");
-//                    pairs[1] = new Pair<View, String>(iconText, "logo_text");
-//
-//
-//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pairs);
-//                        startActivity(intent, options.toBundle());
-//                    }
                     startActivity(intent);
                     finish();
                 }

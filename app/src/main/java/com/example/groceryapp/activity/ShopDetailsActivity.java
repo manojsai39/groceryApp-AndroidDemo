@@ -27,6 +27,7 @@ import com.example.groceryapp.adapters.AdapterReview;
 import com.example.groceryapp.models.ModelProduct;
 import com.example.groceryapp.models.ModelReview;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,12 +40,11 @@ import java.util.ArrayList;
 public class ShopDetailsActivity extends AppCompatActivity {
     
     private ImageView shopIv;
-    private TextView shopNameTv, phoneTv, emailTv, openCloseTv, deliveryFeeTv, addressTv, filterProductTv, cartCountTv;
+    private TextView  filterProductTv, cartCountTv;
     private EditText searchProductEt;
-    private ImageButton backBtn, cartBtn, callBtn, mapBtn, filterProductBtn, reviewsBtn;
+    private ImageButton backBtn, cartBtn, callBtn, mapBtn, filterProductBtn, logoutBtn;
     private RecyclerView productRv;
-    private RatingBar ratingBar;
-    
+
     private String shopUid;
     private String myLatitude, myLongitude;
     private String shopName, shopPhone, shopEmail, shopAddress, shopLatitude, shopLongitude;
@@ -61,24 +61,15 @@ public class ShopDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_details);
         
         shopIv = findViewById(R.id.shopIV);
-        shopNameTv = findViewById(R.id.shopNameTV);
-        phoneTv = findViewById(R.id.phoneTV);
-        emailTv = findViewById(R.id.emailTV);
-//        openCloseTv = findViewById(R.id.openCloseTV);
-//        deliveryFeeTv = findViewById(R.id.deliveryFeeTV);
-        addressTv = findViewById(R.id.addressTV);
         filterProductTv = findViewById(R.id.filterProductTV);
         searchProductEt = findViewById(R.id.searchProductET);
         backBtn = findViewById(R.id.backBtn);
         cartBtn = findViewById(R.id.cartBtn);
-        callBtn = findViewById(R.id.callBtn);
-        mapBtn = findViewById(R.id.mapBtn);
         filterProductBtn = findViewById(R.id.filterProductBtn);
-        reviewsBtn = findViewById(R.id.reviewsBtn);
         productRv = findViewById(R.id.productRV);
         cartCountTv = findViewById(R.id.cartCounterTV);
-        ratingBar = findViewById(R.id.ratingBar);
-        
+        logoutBtn = findViewById(R.id.logoutBtn);
+
         mAuth = FirebaseAuth.getInstance();
 
         shopUid = getIntent().getStringExtra("shopUid");
@@ -89,7 +80,13 @@ public class ShopDetailsActivity extends AppCompatActivity {
         loadShopDetails();
         loadShopProducts();
 //        loadReviews();
-        
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                checkUser();
+            }
+        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,19 +103,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
             }
         });
 
-        callBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialPhone();
-            }
-        });
 
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
 
         filterProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +125,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
                         }).show();
             }
         });
+
+
 
         searchProductEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -163,14 +150,17 @@ public class ShopDetailsActivity extends AppCompatActivity {
             }
         });
 
-        reviewsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ShopDetailsActivity.this, ShopReviewActivity.class);
-                intent.putExtra("shopId", shopUid);
-                startActivity(intent);
-            }
-        });
+
+    }
+    private void checkUser() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(ShopDetailsActivity.this, LoginActivity.class));
+            finish();
+        }
+        else {
+            loadMyInfo();
+        }
     }
 
     private float ratingSum = 0;
