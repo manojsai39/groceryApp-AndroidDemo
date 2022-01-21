@@ -3,18 +3,14 @@ package com.example.groceryapp;
 public class Constants {
 
     public static final String[] productCategories = {
-      "Beverages", "Beauty and Personal Care",
-      "Baby Kid", "Biscuits Snacks & Choocolates",
-      "Breakfast & Dairy", "Cooking Needs",
-      "Frozen Food", "Fruits", "Pet Care", "pharmacy",
-      "Vegetables", "Others"
+      "Beverages","Biscuits Snacks & Choocolates",
+      "Breakfast & Dairy", "Fruits",
+      "Vegetables"
     };
 
     public static final String[] productCategories1 = {
-            "All", "Beverages", "Beauty and Personal Care",
-            "Baby Kid", "Biscuits Snacks & Choocolates",
-            "Breakfast & Dairy", "Cooking Needs",
-            "Frozen Food", "Fruits", "Pet Care", "pharmacy",
-            "Vegetables", "Others"
+            "All", "Beverages", "Biscuits Snacks & Choocolates",
+            "Breakfast & Dairy", "Fruits",
+            "Vegetables"
     };
 }
