@@ -96,7 +96,7 @@ public class SplashActivity extends AppCompatActivity {
 
                                 Log.i("Debug","In Shop Details");
                                 Intent shop_intent = new Intent(SplashActivity.this, ShopDetailsActivity.class);
-                                shop_intent.putExtra("shopUid", "DGajF9pw8ybHiK9mGUfwj7Z9qH93");
+                                shop_intent.putExtra("shopUid", "U6c1bc2Oxeb3IX0xp1NuEBgvKIv1");
                                 startActivity(shop_intent);
                                 Log.i("Debug0","Triggered shop Detail Event");
 

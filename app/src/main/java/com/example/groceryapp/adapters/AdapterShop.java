@@ -68,18 +68,8 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         holder.shopNameTv.setText(shopName);
         holder.phoneTv.setText(phone);
         holder.addressTv.setText(address);
-        if (online.equals("true")){
-            holder.onlineIv.setVisibility(View.VISIBLE);
-        }
-        else {
-            holder.onlineIv.setVisibility(View.GONE);
-        }
-        if (shopOpen.equals("true")){
-            holder.shopClosedTv.setVisibility(View.GONE);
-        }
-        else {
-            holder.shopClosedTv.setVisibility(View.VISIBLE);
-        }
+        holder.onlineIv.setVisibility(View.VISIBLE);
+        holder.shopClosedTv.setVisibility(View.GONE);
         try {
             Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(holder.shopIv);
         }
