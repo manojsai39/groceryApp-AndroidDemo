@@ -74,14 +74,6 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
             }
         });
 
-        writeReviewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(OrderDetailsBuyerActivity.this, WriteReviewActivity.class);
-                intent1.putExtra("shopUid", orderFrom);
-                startActivity(intent1);
-            }
-        });
 
     }
 

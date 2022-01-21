@@ -170,7 +170,7 @@ public class CartActivity extends AppCompatActivity {
 
                                     ref.child(timestamp).child("items").child(pId).setValue(hashMap1);
                                 }
-//                                mProgressDialog.dismiss();
+                                mProgressDialog.dismiss();
 
                             }
 
@@ -179,8 +179,8 @@ public class CartActivity extends AppCompatActivity {
 
                             }
                         });
-//                        ref1.child("CartItem").removeValue().equals(shopId);
-//                        finish();
+                        ref1.child("CartItem").removeValue().equals(shopId);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

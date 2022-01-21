@@ -102,12 +102,6 @@ public class MainSellerActivity extends AppCompatActivity {
             }
         });
 
-        editProfileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainSellerActivity.this, ProfileEditSellerActivity.class));
-            }
-        });
 
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
