@@ -89,14 +89,13 @@ public class CartActivity extends AppCompatActivity {
         placeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (myLatitude.equals("") || myLatitude.equals("null") || myLongitude.equals("") || myLongitude.equals("null")){
                     Toast.makeText(CartActivity.this, "Please enter your address in your profile before placing order", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (myPhone.equals("") || myPhone.equals("null")){
-                    Toast.makeText(CartActivity.this, "Please enter your phone number in your profile before placing order", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                    return;
+//                }
+//                if (myPhone.equals("") || myPhone.equals("null")){
+//                    Toast.makeText(CartActivity.this, "Please enter your phone number in your profile before placing order", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 final String timestamp = ""+System.currentTimeMillis();
                 submitOrder();
 

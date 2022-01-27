@@ -120,9 +120,9 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
                         String longitude = ""+dataSnapshot.child("longitude").getValue();
 
                         orderCost = orderCost.replaceAll("\\(.*[\\)]", "").replaceAll(" \\(", "").replaceAll("\\)", "");
-
                         Calendar calendar = Calendar.getInstance();
-                        calendar.setTimeInMillis(Long.parseLong(orderTime));
+                        Log.i("Debug",orderTime);
+//                        calendar.setTimeInMillis(Long.parseLong(orderTime));
                         String formateDate = DateFormat.format("dd/MM/yyyy hh:mm a", calendar).toString();
 
                         if (orderStatus.equals("In Progress")){
